@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Your JSX code here
+      let rootElement = document.getElementById("root")
+      
+      function App(){
+        const [count, setCount] = React.useState(0)
+        function decHandel(){
+           
+            setCount(count-1)
+            console.log(count);
+
+        }
+        function inHandel(){
+            setCount(count+1)
+            console.log(count);
+        }
+        return <>
+        <button onClick={decHandel}>dec</button>
+        <h1>{count}</h1>
+        <button onClick={inHandel}>inc</button>
+        </>
+      }
+      ReactDOM.createRoot(rootElement).render(<App/>)
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hello">hello</h1>
+    <button onclick="first()" id="first">increament</button>
+    <button onclick="second()" id="second">decreament</button>
+</body>
+</html>
+<script>
+    let btn1 = document.getElementById("first")
+    let btn2 = document.getElementById("second")
+    let hel = document.getElementById("hello")
+   let count = 0
+    function first(){
+     count++
+     hel = count
+    }
+
+    function second(){
+        count--
+        hel = count
+    }
+</script>

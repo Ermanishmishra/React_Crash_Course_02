@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your  code will go here
+    let rootElement = document.getElementById("root")
+
+    function FormState(){
+      const [hoby , setHoby] = React.useState("")
+      const [addData, setAddData] = React.useState([])
+
+      // const [data , setData] = React.useState([])
+      // console.log(hoby);
+
+      function HandelClick(){
+        setHoby(hoby)
+        
+        setAddData([...addData,hoby])
+        
+        console.log(addData);
+      }
+
+      // function handelRemove(index){
+      // //  update = [...addData]
+      //  addData[0].splice(index,1)
+      //  setAddData(addData)
+      // }
+
+      return <>
+          <input type="text"placeholder="Enter your hoby" value={hoby} onChange={((e)=> setHoby(e.target.value))}/>
+          <button onClick={HandelClick}>Add Hoby</button>
+          {
+            addData.map(function(ele,index){
+              return <div>
+                <p>{ele} : <b><button onClick={(index)=>{
+                  <input type="text" value={hoby} placeholder="Enter hoby"/>
+                  
+                  console.log(index);
+                  const update = [...addData]
+                  update.splice(index,1)
+                  setAddData(update)
+                  
+                
+                }}>Remove</button></b></p>
+                
+                </div>
+            })
+          }
+         
+          
+      </>
+        
+    }
+
+    function App(){
+        return <>
+            <FormState/>
+        </>
+    }
+    ReactDOM.createRoot(rootElement).render(<App/>)
+  </script>
+</html>
